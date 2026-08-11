@@ -1,6 +1,6 @@
 # Kemingy-Isite-Deploy.yml
 # github.com/shenjuexiao
-# 20260801
+# 20260811
 
 # github.com/kemingy/isite#isite
 # github.com/kemingy/isite#github-actions
@@ -51,7 +51,8 @@ jobs:
       USER: ${{ github.repository_owner }}
       REPO: ${{ github.event.repository.name }}
       # change this to your custom domain name
-      BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+      # BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+      BASE_URL: https://isite.shenjuexiao.com
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -80,6 +81,7 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "github-actions@users.noreply.github.com"
           git checkout -b backup
+          # git add output/content
           git add -f output/content
           git commit -m "Backup markdown files"
           git push --force origin backup

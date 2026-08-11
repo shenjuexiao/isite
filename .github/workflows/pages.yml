@@ -45,6 +45,14 @@ jobs:
           gh release download $ZOLA_VERSION --repo getzola/zola -p '*x86_64-unknown-linux*' --output zola.tar.gz
           tar zxf zola.tar.gz && mv zola /usr/local/bin
           cd output && zola build --base-url $BASE_URL
+      - name: backup markdown file
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "github-actions@users.noreply.github.com"
+          git checkout -b backup
+          git add output/content
+          git commit -m "Backup markdown files"
+          git push --force origin backup
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

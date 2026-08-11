@@ -79,6 +79,6 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "github-actions@users.noreply.github.com"
           git checkout -b backup
-          git add markdown
+          git add -f output/content
           git commit -m "Backup markdown files"
           git push --force origin backup
